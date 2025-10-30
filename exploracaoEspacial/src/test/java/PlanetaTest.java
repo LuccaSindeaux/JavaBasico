@@ -47,11 +47,11 @@ public class PlanetaTest {
         Assert.assertEquals(180, imutabilis.getValorTotal());
 
         recursosExternos.add(new Recurso(500, 50));
-        Assert.assertEquals(100, imutabilis.getValorTotal());
+        Assert.assertEquals(180, imutabilis.getValorTotal());
 
         List<Recurso> listaDoPlaneta = imutabilis.getRecursos();
         listaDoPlaneta.add(new Recurso(1000, 100));
 
-        Assert.assertEquals(100, imutabilis.getValorTotal());
+        Assert.assertEquals(180, imutabilis.getValorTotal());
     }
 }
