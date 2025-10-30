@@ -153,4 +153,95 @@ public class NegociacaoTest {
         Assert.assertEquals(0, precoEsperado.compareTo(precoCalculado));
     }
 
+    @Test
+    public void deveComputarATrocaDeClubes(){
+        Negociacao negociacao = new Negociacao();
+;
+        Clube clube = new Clube("Grêmio", 10, new BigDecimal("100000000"));
+        Goleiro goleiro = new Goleiro("Marcelo Grohe", 33, null, 8, new Indiferente(), new BigDecimal("800500"), 12);
+
+        boolean foiPossivelNegociar = negociacao.negociar(clube, goleiro);
+
+        Assert.assertEquals("Grêmio", goleiro.getClubeAtual());
+    }
+
+    @Test
+    public void naoDeveNegociarJogadorComClubeReputacaoZero(){
+        Negociacao negociacao = new Negociacao();
+
+
+        Clube clube = new Clube("Pelotas", 0, new BigDecimal("100000"));
+        Goleiro goleiro = new Goleiro("Magrão do Fortaleza", 30, null, 5, new Indiferente(), new BigDecimal("1000000"), 0);
+
+        boolean foiPossivelNegociar = negociacao.negociar(clube, goleiro);
+
+        Assert.assertFalse(foiPossivelNegociar);
+    }
+
+    @Test
+    public void testandoOsGettersDosJogadores(){
+        Jogador goleiro = new Goleiro("Marcelo Grohe", 33, null, 8, new Indiferente(), new BigDecimal("80000"), 8);
+
+        Assert.assertEquals("Marcelo Grohe", goleiro.getNome());
+        Assert.assertEquals(33, goleiro.getIdade());
+        Assert.assertEquals(8, goleiro.getReputacaoHistorica());
+    }
+
+    @Test
+    public void meioCampoDeveTerInteresseEmClubeComReputacaoMenor(){
+        MeioCampo meioCampo = new MeioCampo("Zidane", 30, null, 8, new Indiferente(), new BigDecimal("100000"));
+
+        Clube clube = new Clube("Clube Menor", 6, new BigDecimal("1000000"));
+
+        boolean temInteresse = meioCampo.temInteresse(clube);
+
+        Assert.assertTrue(temInteresse);
+    }
+
+    @Test
+    public void meioCampoDeveTerInteresseEmClubeComReputacaoProxima(){
+        MeioCampo meioCampo = new MeioCampo("Zidane", 30, null, 8, new Indiferente(), new BigDecimal("100000"));
+
+        Clube clube = new Clube("Clube Regular", 7, new BigDecimal("1000000"));
+
+        boolean temInteresse = meioCampo.temInteresse(clube);
+
+        Assert.assertFalse(temInteresse);
+    }
+
+    @Test
+    public void deveCalcularCorretamentePrecoAtacanteComMaisDeTrintaAnos(){
+        Atacante atacante = new Atacante("Ronaldo", 35, null, 10, new Indiferente(), new BigDecimal("1000000"), 20);
+
+        BigDecimal precoEsperado = new BigDecimal("900000");
+
+        BigDecimal precoCalculado = atacante.getValorCompra();
+
+        Assert.assertEquals(0, precoEsperado.compareTo(precoCalculado));
+    }
+
+    @Test
+    public void deveCalcularCorretamentePrecoAtacanteComMenosDeTrintaAnos(){
+        Atacante atacante = new Atacante("Ronaldo", 25, null, 10, new Indiferente(), new BigDecimal("1000000"), 20);
+
+        BigDecimal precoEsperado = new BigDecimal("1200000");
+
+        BigDecimal precoCalculado = atacante.getValorCompra();
+
+        Assert.assertEquals(0, precoEsperado.compareTo(precoCalculado));
+    }
+
+    @Test
+    public void atacanteDeveTerInteresseEmClubeComReputacaoMaior(){
+        Atacante atacante = new Atacante("Ronaldo", 25, null, 8, new Indiferente(), new BigDecimal("1000000"), 20);
+
+        Clube clube = new Clube("Juventus", 9, new BigDecimal("1000000"));
+
+        boolean temInteresse = atacante.temInteresse(clube);
+
+        Assert.assertTrue(temInteresse);
+
+
+    }
+
 }
