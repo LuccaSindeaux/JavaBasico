@@ -55,3 +55,11 @@ Há por fim a classe Simulacao, que serve para simular o custo de uma missão, l
 <h3>dicionario</h3>
 
 Exercício que fixa os conceitos de Enum, Exception (com throw new), bem como a biliotecas Map e HashMap. Aqui são criados dicionários, e os métodos devolvem a tradução de palavras do português para o inglês, e do inglês para o português.
+
+<h3>Batalha Pokemon</h3>
+
+Exercício de fixação de quase todo o conteúdo, já aqui uso de if else, enum, interface, classes abstratas e o uso de laço while. 
+
+Foram criadas 4 classes: Pokemon, Treinador, Item e Arena, em trÊs packages: 1- pokemon (class Pokemon), 2 - treinador (class Treinador, class Item) e 3 - arena (class Arena).
+
+Os pokemons possuem status, os treinadores possuem dois construtores -> um que aceita só o nome do treiandor, e outro que aceita seu nome e item. Os enums são sobre os tipos de pokemon (aqui usados os tipos FOGO, AGUA, GRAMA e ELETRICO) e movimentos (ESPECIAL e FISICO).
